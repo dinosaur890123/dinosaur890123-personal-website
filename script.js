@@ -28,7 +28,7 @@ upgradeButton.addEventListener('click', function() {
         clickCountSpan.textContent = Math.floor(clicks);
         upgradeCostSpan.textContent = upgradeCost;
     }
-})
+});
 upgradeAutoClickerButton.addEventListener('click', function() {
     if (clicks >= autoClickerCost) {
         clicks -= autoClickerCost;
@@ -39,10 +39,17 @@ upgradeAutoClickerButton.addEventListener('click', function() {
         autoClickerCountSpan.textContent = autoClickerCount;
         clicksPerSecondSpan.textContent = autoClickerCount;
     }
-})
+});
+function autoClick() {
+    if (autoClickerCount > 0) {
+        clicks += autoClickerCount;
+        clickCountSpan.textContent = Math.floor(clicks);
+    }
+}
+setInterval(autoClick, 1000);
+const username = "dinosaur890123";
 async function getGithubRepoCount() {
     try {
-        const username = "dinosaur890123";
         const apiUrl = `https://api.github.com/users/${username}`;
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -56,6 +63,14 @@ async function getGithubRepoCount() {
         console.error("Failed to fetch GitHub data:", error);
         const repoCountElement = document.getElementById("repo-count");
         repoCountElement.textContent = "Couldn't load Github repo count";
+    }
+}
+async function getGithubRepos() {
+    try {
+        const reposUrl = `https://api.github.com/users/${username}/repos?sort=updated&direction=desc`;
+        const response = await fetch(reposUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const repos = await response.json();
     }
 }
 getGithubRepoCount();
