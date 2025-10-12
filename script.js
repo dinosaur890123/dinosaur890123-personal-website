@@ -13,9 +13,22 @@ const upgradeAutoClickerButton = document.getElementById("upgrade-autoclicker");
 const autoClickerCostSpan = document.getElementById("autoclicker-cost");
 const autoClickerCountSpan = document.getElementById("autoclicker-count");
 const clicksPerSecondSpan = document.getElementById("clicks-per-second");
-messageButton.addEventListener('click', function() {
-    messageText.textContent = "you clicked the button!";
+gameTrigger.addEventListener("click", function() {
+    if (clickerGameSection.classList.contains("hidden")) {
+        clickerGameSection.classList.remove("hidden");
+    }
+    clicks += clickPower;
+    clickCountSpan.textContent = Math.floor(clicks);
 });
+upgradeButton.addEventListener('click', function() {
+    if (clicks >= upgradeCost) {
+        clicks -= upgradeCost;
+        clickPower += 1;
+        upgradeCost = Math.ceil(upgradeCost * 1.5);
+        clickCountSpan.textContent = Math.floor(clicks);
+        upgradeCostSpan.textContent = upgradeCost;
+    }
+})
 async function getGithubRepoCount() {
     try {
         const username = "dinosaur890123";
