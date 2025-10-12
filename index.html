@@ -7,14 +7,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hi, I'm Carlson</h1>
-        <p>I'm known on some platforms like discord and gaming as dinosaur890123</p>
-        <a href="https://github.com/dinosaur890123" target="_blank">Check out my github</a>
-        <p id="repo-count">Loading github stats</p>
-        <button id="messageButton">click me!</button>
-        <p id="messageText"></p>
-    </div>
+    <header>
+        <h1 id="game-trigger">I'm Carlson</h1>
+    </header>
+    <main class="container">
+
+        <section id="profile">
+            <h2>Welcome to my page!</h2>
+            <p>I'm a 14 year old developer and tech enthusiast.</p>
+            <a href="https://github.com/dinosaur890123/" target="_blank" class="button">Check out my GitHub</a>
+            <p id="repo-count">Loading GitHub stats...</p>
+        </section>
+
+        <section id="clicker-game" class="hidden">
+            <h2>secret clicker game!</h2>
+            <p>Clicks: <span id="click-count">0</span></p>
+            <div id="upgrades">
+                <button id="upgrade-click-power">More Power (Cost: <span id="upgrade-cost">10</span>)</button>
+                <button id="upgrade-autoclicker">Buy Autoclicker (Cost: <span id="autoclicker-cost">50</span>)</button>
+            </div>
+        </section>
+
+        <section id="projects-section">
+            <h2>My github projects</h2>
+            <div id="repo-list">
+            </div>
+        </section>
+
+    </main>
+    <footer>
+        <p>Built by me in 2025!</p>
+    </footer>
     <script src="script.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 </body>
 </html>

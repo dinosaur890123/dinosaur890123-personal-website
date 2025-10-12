@@ -1,5 +1,18 @@
-const messageButton = document.getElementById("messageButton");
-const messageText = document.getElementById("messageText");
+let clicks = 0;
+let clickPower = 1;
+let upgradeCost = 10;
+let autoClickerCount = 0;
+let autoClickerCost = 50;
+
+const gameTrigger = document.getElementById("game-trigger");
+const clickerGameSection = document.getElementById("clicker-game");
+const clickCountSpan = document.getElementById("click-count");
+const upgradeButton = document.getElementById("upgrade-click-power");
+const upgradeCostSpan = document.getElementById("upgrade-cost");
+const upgradeAutoClickerButton = document.getElementById("upgrade-autoclicker");
+const autoClickerCostSpan = document.getElementById("autoclicker-cost");
+const autoClickerCountSpan = document.getElementById("autoclicker-count");
+const clicksPerSecondSpan = document.getElementById("clicks-per-second");
 messageButton.addEventListener('click', function() {
     messageText.textContent = "you clicked the button!";
 });
