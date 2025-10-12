@@ -29,6 +29,17 @@ upgradeButton.addEventListener('click', function() {
         upgradeCostSpan.textContent = upgradeCost;
     }
 })
+upgradeAutoClickerButton.addEventListener('click', function() {
+    if (clicks >= autoClickerCost) {
+        clicks -= autoClickerCost;
+        autoClickerCount += 1;
+        autoClickerCost = Math.ceil(autoClickerCost * 1.7);
+        clickCountSpan.textContent = Math.floor(clicks);
+        autoClickerCostSpan.textContent = autoClickerCost;
+        autoClickerCountSpan.textContent = autoClickerCount;
+        clicksPerSecondSpan.textContent = autoClickerCount;
+    }
+})
 async function getGithubRepoCount() {
     try {
         const username = "dinosaur890123";
