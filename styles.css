@@ -5,19 +5,17 @@ body {
     margin: 0;
 }
 .container {
-    text-align: center;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    box-sizing: border-box;
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 h1 {
     margin: 0;
-    color: #e7e7e7;
+    color: #bcbbbb;
 }
 a:hover {
     text-decoration: underline;
@@ -39,4 +37,42 @@ button:hover {
     margin-top: 15px;
     font-weight: bold;
     color: #22c55e;
+}
+#game-trigger {
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+}
+#game-trigger:active {
+    transform: scale(0.95);
+}
+.hidden {
+    display: none;
+}
+#clicker-game {
+    background-color: #2a2718;
+    border: 1px solid #4d4624;
+    padding: 20px;
+    border-radius: 8px;
+}
+#clicker-game h2 {
+    margin-top: 0;
+    color: rgb(234, 150, 78);
+}
+#clicker-game p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+#upgrades {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+#repo-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: left;
 }

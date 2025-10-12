@@ -71,6 +71,23 @@ async function getGithubRepos() {
         const response = await fetch(reposUrl);
         if (!response.ok) throw new Error('Network response was not ok');
         const repos = await response.json();
+        const repoListElement = document.getElementById("repo-list");
+        repoListElement.innerHTML = '';
+        repos.slice(0, 6).forEach(repo => {
+            const repoCard = document.createElement('div');
+            repoCard.className = 'repo-card';
+            const description = repo.description || 'No description';
+            repoCard.innerHTML = `
+                <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+                <p>${description}</p>
+            `;
+            repoListElement.appendChild(repoCard);
+        });
+    } catch (error) {
+        console.error("Failed to fetch github repos", error);
+        const repoListElement = document.getElementById("repo-list");
+        repoListElement.innerHTML = '<p>Could not load my projects :(</p>';
     }
 }
 getGithubRepoCount();
+getGithubRepos();
