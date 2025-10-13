@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('assets/MinecraftRegular-Bmg3.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
     font-family: 'Minecraft', sans-serif;
     background-color: #263347;
@@ -170,4 +176,34 @@ footer {
 .repo-card p {
     font-size: 0.9em;
     color: #a0a0a0;
+}
+#tools {
+    text-align: center;
+}
+.tools-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+.tool-item {
+    text-align: center;
+    width: 100px;
+}
+.tool-item img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+.tool-item img:hover {
+    transform: scale(1.1);
+}
+.tool-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #c0c0c0;
 }
