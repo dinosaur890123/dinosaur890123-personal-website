@@ -4,7 +4,42 @@ body {
     color: #e0e0e0;
     margin: 0;
 }
-.container {
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.brand h1 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #ffffff;
+}
+.brand p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #a0a0a0;
+}
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+nav a:hover, nav a.active {
+    background-color: #444444;
+}
+main.container {
     width: 90%;
     max-width: 960px;
     margin: 20px auto;
@@ -13,9 +48,16 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
+section {
+    text-align: center;
+    margin-bottom: 40px;
+}
 h1 {
     margin: 0;
     color: #bcbbbb;
+}
+h2 {
+    margin-bottom: 20px;
 }
 a.button, button {
     display: inline-block;
@@ -84,7 +126,7 @@ button:hover {
     margin-top: 15px;
     flex-wrap: wrap;
 }
-#repo-list {
+#repo-list, #all-repo-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
