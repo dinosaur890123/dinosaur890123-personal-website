@@ -4,6 +4,9 @@
     font-weight: normal;
     font-style: normal;
 }
+html {
+    cursor: url('assets/sword.png'), auto;
+}
 body {
     font-family: 'Minecraft', sans-serif;
     background-color: #263347;

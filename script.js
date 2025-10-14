@@ -28,7 +28,7 @@ if (isHomePage) {
         if (clicks >= upgradeCost) {
             clicks -= upgradeCost;
             clickPower += 1;
-            upgradeCost = Math.ceil(upgradeCost * 1.5);
+            upgradeCost = Math.ceil(upgradeCost * 1.3);
             clickCountSpan.textContent = Math.floor(clicks);
             upgradeCostSpan.textContent = upgradeCost;
         }
@@ -37,7 +37,7 @@ if (isHomePage) {
         if (clicks >= autoClickerCost) {
             clicks -= autoClickerCost;
             autoClickerCount += 1;
-            autoClickerCost = Math.ceil(autoClickerCost * 1.7);
+            autoClickerCost = Math.ceil(autoClickerCost * 1.4);
             clickCountSpan.textContent = Math.floor(clicks);
             autoClickerCostSpan.textContent = autoClickerCost;
             autoClickerCountSpan.textContent = autoClickerCount;
@@ -111,6 +111,37 @@ async function getAllGithubRepos() {
         allRepoListElement.innerHTML = '<p>Could not load my projects :(</p>';
     }
 }
+const totalEasterEggs = 2;
+function updateEasterEggDisplay() {
+    const tracker = document.getElementById('easter-egg-tracker');
+    if (!tracker) return;
+    let foundEggs = JSON.parse(localStorage.getItem('foundEasterEggs')) || {};
+    let foundCount = Object.keys(foundEggs).filter(key => foundEggs[key]).length;
+    tracker.textContent = `Easter Eggs Found: ${foundCount} / ${totalEasterEggs}`;
+}
+function markEasterEggAsFound(eggName) {
+    let foundEggs = JSON.parse(localStorage.getItem('foundEasterEggs')) || {};
+    if (!foundEggs[eggName]) {
+        foundEggs[eggName] = true;
+        localStorage.setItem('foundEasterEggs', JSON.stringify(foundEggs));
+        updateEasterEggDisplay();
+    }
+}
+function annoyingNavigation() { // it doesn't bother you that much right?
+    const nav = document.querySelector('nav');
+    if (nav) {
+        const homeLink = nav.querySelector('a[href="index.html"]');
+        const reposLink = nav.querySelector('a[href="repos.html"]');
+        if (homeLink && reposLink) {
+            nav.addEventListener('mouseenter', () => {
+                nav.insertBefore(reposLink, homeLink);
+            });
+            nav.addEventListener('mouseleave', () => {
+                nav.insertBefore(homeLink, reposLink);
+            });
+        }
+    }
+}
 function init() {
     if (isHomePage) {
         getGithubRepoCount();
@@ -118,6 +149,9 @@ function init() {
     }
     if (isReposPage) {
         getAllGithubRepos();
+        markEasterEggAsFound('annoyingNavigation');
     }
+    annoyingNavigation();
+    updateEasterEggDisplay();
 }
 init();
