@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contaner loading-container">
+        <div id="loading-content">
+            <h1>Unpacking secret files...</h1>
+            <p>This might take a moment. Please don't close this tab.</p>
+            <div id="progress-bar-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="progress-text">0%</p>
+        </div>
+    </div>
+    <div id="error-message" class="hidden">
+            <h2>Critical Failure</h2>
+            <p>The content failed to load. The hamster fell off his wheel.</p>
+            <button onclick="location.reload()">Try Again</button>
+        </div>
+<script>
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const loadingContent = document.getElementById('loading-content');
+    const errorMessage = document.getElementById('error-message');
+    
+    let progress = 0
+    const interval = setInterval(() => {
+        progress += Math.random() * 0.01;
+        if (progress > 100) {
+            progress = 100;
+        }
+        progressBar.style.width = progress + '%';
+        progressText.textContent = Math.floor(progress) + '%';
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                loadingContent.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+            }, 1000);
+        }
+    })
+</script>
+</body>
+</html>

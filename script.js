@@ -15,8 +15,10 @@ if (isHomePage) {
     const autoClickerCostSpan = document.getElementById("autoclicker-cost");
     const autoClickerCountSpan = document.getElementById("autoclicker-count");
     const clicksPerSecondSpan = document.getElementById("clicks-per-second");
+    
 
     gameTrigger.addEventListener("click", function() {
+        markEasterEggAsFound('clickerGame');
         if (clickerGameSection.classList.contains("hidden")) {
             clickerGameSection.classList.remove("hidden");
         }
