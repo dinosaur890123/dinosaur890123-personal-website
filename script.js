@@ -15,7 +15,6 @@ if (isHomePage) {
     const autoClickerCostSpan = document.getElementById("autoclicker-cost");
     const autoClickerCountSpan = document.getElementById("autoclicker-count");
     const clicksPerSecondSpan = document.getElementById("clicks-per-second");
-    
 
     gameTrigger.addEventListener("click", function() {
         markEasterEggAsFound('clickerGame');
@@ -113,6 +112,23 @@ async function getAllGithubRepos() {
         allRepoListElement.innerHTML = '<p>Could not load my projects :(</p>';
     }
 }
+function enableRepoSearch() {
+    const searchBar = document.getElementById('search-bar');
+    if (searchBar) {
+        searchBar.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const repoCards = document.querySelectorAll('#all-repo-list .repo-card');
+            repoCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+}
 const totalEasterEggs = 2;
 function updateEasterEggDisplay() {
     const tracker = document.getElementById('easter-egg-tracker');
@@ -151,6 +167,7 @@ function init() {
     }
     if (isReposPage) {
         getAllGithubRepos();
+        enableRepoSearch();
         markEasterEggAsFound('annoyingNavigation');
     }
     annoyingNavigation();

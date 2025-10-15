@@ -263,6 +263,29 @@ footer {
 #error-message-button:hover {
     background-color: #555252;
 }
+.search-container {
+    margin: 20px auto 0;
+    max-width: 640px;
+}
+#search-bar {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Minecraft', sans-serif;
+    background: #2a2718;
+    color: #ece9e9;
+    border: 2px solid #4d4624;
+    border-radius: 6px;
+    outline: none;
+    box-shadow: inset 0 2px 0 #1c1a11,0 2px 0 rgba(0,0,0,0.25);
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+#search-bar button:hover {
+    color: #9b987f;
+}
+#search-bar:focus {
+    border-color: #36a420;
+    box-shadow: 0 0 0 3px rgba(54,164,32,0.2), inset 0 2px 0 #1c1a11;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
