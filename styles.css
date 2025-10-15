@@ -286,6 +286,40 @@ footer {
     border-color: #36a420;
     box-shadow: 0 0 0 3px rgba(54,164,32,0.2), inset 0 2px 0 #1c1a11;
 }
+.mc-not-found {
+    text-align: center;
+}
+.mc-title {
+    color: #8BC34A;
+    margin-bottom: 10px;
+}
+.mc-subtitle code {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #c5c5c5;
+}
+.mc-scene {
+    display: flex;
+    justify-content: center;
+    margin: 22px 0 6px;
+}
+.mc-image {
+    width: 160px;
+    max-width: 60vw;
+    height: auto;
+    image-rendering: pixelated;
+    border: 1px solid #404040;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+.mc-actions {
+    margin-top: 16px;
+}
+.mc-actions .button + .button {
+    margin-left: 10px;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;

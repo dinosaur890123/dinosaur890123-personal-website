@@ -24,7 +24,23 @@
             <div class="mc-scene">
                 <img class="mc-image" src="assets/grassblock.png" alt="Minecraft grass block">
             </div>
+            <div class="mc-actions">
+                <a class="button" href="index.html">Return home!</a>
+                <a class="button" href="repos.html">Browse my repos!</a>
+            </div>
         </section>
     </main>
+    <footer>
+        <div class="footer-links">
+            <a href="loading.html" class="footer-link">Claim a reward...</a>
+        </div>
+        <p id="easter-egg-tracker"></p>
+        <p>Built by me in 2025!</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const element = document.getElementById('missing-path');
+        if (element) element.textContent = location.pathname + location.search;
+    </script>
 </body>
 </html>
