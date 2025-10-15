@@ -15,6 +15,27 @@ if (isHomePage) {
     const autoClickerCostSpan = document.getElementById("autoclicker-cost");
     const autoClickerCountSpan = document.getElementById("autoclicker-count");
     const clicksPerSecondSpan = document.getElementById("clicks-per-second");
+    const STORAGE_KEY = 'clickerGameState';
+    function saveProgress() {
+        localStorage.setItem('clicks', clicks);
+        localStorage.setItem('clickPower', clickPower);
+        localStorage.setItem('upgradeCost', upgradeCost);
+        localStorage.setItem('autoClickerCount', autoClickerCount);
+        localStorage.setItem('autoClickerCost', autoClickerCost);
+    }
+    function loadProgress() {
+        localStorage.setItem('clicks', clicks);
+        localStorage.setItem('clickPower', clickPower);
+        localStorage.setItem('upgradeCost', upgradeCost);
+        localStorage.setItem('autoClickerCount', autoClickerCount);
+        localStorage.setItem('autoClickerCost', autoClickerCost);
+        clickCountSpan.textContent = Math.floor(clicks);
+        upgradeCostSpan.textContent = upgradeCost;
+        autoClickerCostSpan.textContent = autoClickerCost;
+        autoClickerCountSpan.textContent = autoClickerCount;
+        clicksPerSecondSpan.textContent = autoClickerCount;
+    }
+    loadProgress();
 
     gameTrigger.addEventListener("click", function() {
         markEasterEggAsFound('clickerGame');
@@ -23,6 +44,7 @@ if (isHomePage) {
         }
         clicks += clickPower;
         clickCountSpan.textContent = Math.floor(clicks);
+        saveProgress();
     });
 
     upgradeButton.addEventListener('click', function() {
@@ -32,6 +54,7 @@ if (isHomePage) {
             upgradeCost = Math.ceil(upgradeCost * 1.3);
             clickCountSpan.textContent = Math.floor(clicks);
             upgradeCostSpan.textContent = upgradeCost;
+            saveProgress();
         }
     });
     upgradeAutoClickerButton.addEventListener('click', function() {
@@ -43,12 +66,14 @@ if (isHomePage) {
             autoClickerCostSpan.textContent = autoClickerCost;
             autoClickerCountSpan.textContent = autoClickerCount;
             clicksPerSecondSpan.textContent = autoClickerCount;
+            saveProgress();
         }
     });
     setInterval(() => {
         if (autoClickerCount > 0) {
             clicks += autoClickerCount;
             clickCountSpan.textContent = Math.floor(clicks);
+            saveProgress();
         }
     }, 1000);
 }
