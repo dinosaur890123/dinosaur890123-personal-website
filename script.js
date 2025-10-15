@@ -36,7 +36,6 @@ if (isHomePage) {
         clicksPerSecondSpan.textContent = autoClickerCount;
     }
     loadProgress();
-
     gameTrigger.addEventListener("click", function() {
         markEasterEggAsFound('clickerGame');
         if (clickerGameSection.classList.contains("hidden")) {
@@ -185,6 +184,26 @@ function annoyingNavigation() { // it doesn't bother you that much right?
         }
     }
 }
+function enableTooltips() {
+    const tooltip = document.getElementById('tooltip');
+    if (!tooltip) return;
+    document.querySelectorAll('.tool-item').forEach(item => {
+        item.addEventListener('mouseenter', (e) => {
+            const tooltipText = item.getAttribute('data-tooltip');
+            if (tooltipText) {
+                tooltip.textContent = tooltipText;
+                tooltip.style.opacity = '1';
+            }
+        });
+        item.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+        });
+        item.addEventListener('mousemove', (e) => {
+            tooltip.style.left = `${e.clientX + 15}px`;
+            tooltip.style.top = `${e.clientY + 15}px`;
+        })
+    });
+}
 function init() {
     if (isHomePage) {
         getGithubRepoCount();
@@ -197,5 +216,6 @@ function init() {
     }
     annoyingNavigation();
     updateEasterEggDisplay();
+    enableTooltips();
 }
 init();

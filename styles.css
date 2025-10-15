@@ -320,6 +320,23 @@ footer {
 .mc-actions .button + .button {
     margin-left: 10px;
 }
+#tooltip {
+    position: fixed;
+    background-color: #0d0d0d;
+    color: #efe7e7;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    max-width: 250px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.tool-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #cdc9c9;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
