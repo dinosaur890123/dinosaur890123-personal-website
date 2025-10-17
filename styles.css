@@ -128,6 +128,15 @@ button:hover {
     font-size: 1.2em;
     font-weight: bold;
 }
+#prestige-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #4d4624;
+}
+#prestige-container p {
+    font-size: 1em;
+    color: #f0e68c;
+}
 #upgrades {
     display: flex;
     justify-content: center;

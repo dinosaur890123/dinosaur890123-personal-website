@@ -6,6 +6,8 @@ if (isHomePage) {
     let upgradeCost = 10;
     let autoClickerCount = 0;
     let autoClickerCost = 50;
+    let prestigeLevel = 0;
+    let prestigeCost = 1000000;
     const gameTrigger = document.getElementById("game-trigger");
     const clickerGameSection = document.getElementById("clicker-game");
     const clickCountSpan = document.getElementById("click-count");
@@ -15,25 +17,50 @@ if (isHomePage) {
     const autoClickerCostSpan = document.getElementById("autoclicker-cost");
     const autoClickerCountSpan = document.getElementById("autoclicker-count");
     const clicksPerSecondSpan = document.getElementById("clicks-per-second");
+    const prestigeButton = document.getElementById('prestige-button');
+    const prestigeLevelSpan = document.getElementById('prestige-level');
+    const prestigeBoostSpan = document.getElementById('prestige-boost');
+    const prestigeCostSpan = document.getElementById('prestige-cost');
     const STORAGE_KEY = 'clickerGameState';
     function saveProgress() {
-        localStorage.setItem('clicks', clicks);
-        localStorage.setItem('clickPower', clickPower);
-        localStorage.setItem('upgradeCost', upgradeCost);
-        localStorage.setItem('autoClickerCount', autoClickerCount);
-        localStorage.setItem('autoClickerCost', autoClickerCost);
+        const gameState = {
+            clicks,
+            clickPower,
+            upgradeCost,
+            autoClickerCount,
+            autoClickerCost,
+            prestigeLevel,
+            prestigeCost
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(gameState));
     }
     function loadProgress() {
-        localStorage.setItem('clicks', clicks);
-        localStorage.setItem('clickPower', clickPower);
-        localStorage.setItem('upgradeCost', upgradeCost);
-        localStorage.setItem('autoClickerCount', autoClickerCount);
-        localStorage.setItem('autoClickerCost', autoClickerCost);
+        const savedState = localStorage.getItem(STORAGE_KEY);
+        if (savedState) {
+            const gameState = JSON.parse(savedState);
+            clicks = gameState.clicks || 0;
+            clickPower = gameState.clickPower || 1;
+            upgradeCost = gameState.upgradeCost || 10;
+            autoClickerCount = gameState.autoClickerCount || 0;
+            autoClickerCost = gameState.autoClickerCost || 50;
+            prestigeLevel = gameState.prestigeLevel || 0;
+            prestigeCost = gameState.prestigeCost || 1000000;
+        }
+        updateUI();
+    }
+    function getPrestigeBoost() {
+        return 1 + prestigeLevel * 0.5;
+    }
+    function updateUI() {
         clickCountSpan.textContent = Math.floor(clicks);
         upgradeCostSpan.textContent = upgradeCost;
         autoClickerCostSpan.textContent = autoClickerCost;
         autoClickerCountSpan.textContent = autoClickerCount;
-        clicksPerSecondSpan.textContent = autoClickerCount;
+        const cps = autoClickerCount * getPrestigeBoost();
+        clicksPerSecondSpan.textContent = cps.toFixed(1);
+        prestigeLevelSpan.textContent = prestigeLevel;
+        prestigeBoostSpan.textContent = prestigeLevel * 50;
+        prestigeCostSpan.textContent = prestigeCost.toLocaleString();
     }
     loadProgress();
     gameTrigger.addEventListener("click", function() {
@@ -42,7 +69,7 @@ if (isHomePage) {
             clickerGameSection.classList.remove("hidden");
         }
         clicks += clickPower;
-        clickCountSpan.textContent = Math.floor(clicks);
+        updateUI();
         saveProgress();
     });
 
@@ -51,8 +78,7 @@ if (isHomePage) {
             clicks -= upgradeCost;
             clickPower += 1;
             upgradeCost = Math.ceil(upgradeCost * 1.3);
-            clickCountSpan.textContent = Math.floor(clicks);
-            upgradeCostSpan.textContent = upgradeCost;
+            updateUI();
             saveProgress();
         }
     });
@@ -61,17 +87,28 @@ if (isHomePage) {
             clicks -= autoClickerCost;
             autoClickerCount += 1;
             autoClickerCost = Math.ceil(autoClickerCost * 1.4);
-            clickCountSpan.textContent = Math.floor(clicks);
-            autoClickerCostSpan.textContent = autoClickerCost;
-            autoClickerCountSpan.textContent = autoClickerCount;
-            clicksPerSecondSpan.textContent = autoClickerCount;
+            updateUI();
             saveProgress();
         }
     });
+    prestigeButton.addEventListener('click', function() {
+        if (clicks >= prestigeCost) {
+            prestigeLevel++;
+            prestigeCost = Math.ceil(prestigeCost * 5);
+            clicks = 0;
+            clickPower = 1;
+            upgradeCost = 10;
+            autoClickerCount = 0;
+            autoClickerCost = 50;
+            updateUI();
+            saveProgress();
+        }
+    })
     setInterval(() => {
         if (autoClickerCount > 0) {
             clicks += autoClickerCount;
             clickCountSpan.textContent = Math.floor(clicks);
+            updateUI();
             saveProgress();
         }
     }, 1000);
@@ -104,10 +141,12 @@ async function getLatestGithubRepos() {
         repoListElement.innerHTML = ''; 
         repos.slice(0, 6).forEach(repo => {
             const description = repo.description || 'No description';
+            const language = repo.language ? `<p class="repo-language">${repo.language}</p>` : '';
             repoListElement.innerHTML += `
                 <div class="repo-card">
                     <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
                     <p>${description}</p>
+                    ${language}
                 </div>`;
         });
     } catch (error) {
