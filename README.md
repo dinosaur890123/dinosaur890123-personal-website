@@ -1,0 +1,1 @@
+My personal minecraft themed personal site, complete with a secret clicker game, tabs that subtly mess around with you, and a time wasting page. The header has a subtle but pleasing blur effect, and the Github API is there to show my repositories with their descriptions and languages
