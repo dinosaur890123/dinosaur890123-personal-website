@@ -208,21 +208,6 @@ function markEasterEggAsFound(eggName) {
         updateEasterEggDisplay();
     }
 }
-function annoyingNavigation() { // it doesn't bother you that much right?
-    const nav = document.querySelector('nav');
-    if (nav) {
-        const homeLink = nav.querySelector('a[href="index.html"]');
-        const reposLink = nav.querySelector('a[href="repos.html"]');
-        if (homeLink && reposLink) {
-            nav.addEventListener('mouseenter', () => {
-                nav.insertBefore(reposLink, homeLink);
-            });
-            nav.addEventListener('mouseleave', () => {
-                nav.insertBefore(homeLink, reposLink);
-            });
-        }
-    }
-}
 function enableTooltips() {
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) return;
