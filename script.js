@@ -1,3 +1,19 @@
+const tabs = document.querySelectorAll('.tab');
+const contentPanes = document.querySelectorAll('.content-pane');
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetId = tab.dataset.target;
+        tabs.forEach(t => t.classList.remove('active'));
+        contentPanes.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) {
+            targetPane.classList.add('active');
+        }
+    });
+});
+
+
 const isHomePage = document.getElementById('home-content') !== null;
 const isReposPage = document.getElementById('all-projects-section') !== null;
 if (isHomePage) {
