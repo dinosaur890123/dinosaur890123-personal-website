@@ -1,4 +1,4 @@
-const tabsContainer = document.querySelectorAll('.tab');
+const tabsContainer = document.querySelector('.tabs');
 const newTabButton = document.getElementById('new-tab-button');
 const newTabMenu = document.getElementById('new-tab-menu');
 const contentPanes = document.querySelectorAll('.content-pane');
@@ -67,8 +67,7 @@ window.addEventListener('click', () => {
         newTabMenu.classList.add('hidden');
     }
 })
-
-
+let reposLoaded = false;
 const isHomePage = document.getElementById('home-content') !== null;
 const isReposPage = document.getElementById('all-projects-section') !== null;
 if (isHomePage) {
@@ -177,7 +176,7 @@ if (isHomePage) {
     })
     setInterval(() => {
         if (autoClickerCount > 0) {
-            clicks += autoClickerCount;
+            clicks += (autoClickerCount * getPrestigeBoost());
             clickCountSpan.textContent = Math.floor(clicks);
             updateUI();
             saveProgress();
@@ -304,13 +303,20 @@ function init() {
         getGithubRepoCount();
         getLatestGithubRepos();
     }
-    if (isReposPage) {
-        getAllGithubRepos();
-        enableRepoSearch();
-        markEasterEggAsFound('annoyingNavigation');
-    }
-    annoyingNavigation();
     updateEasterEggDisplay();
     enableTooltips();
 }
 init();
+newTabMenu.addEventListener('click', (e) => {
+    if (e.target.classList.contains('menu-item')) {
+        const targetId = e.target.dataset.target;
+        const title = e.target.dataset.title;
+        if (targetId === 'repos-content' && !reposLoaded) {
+            getAllGithubRepos();
+            enableRepoSearch();
+            reposLoaded = true;
+        }
+        createNewTab(targetId, title);
+        newTabMenu.classList.add('hidden');
+    }
+})
