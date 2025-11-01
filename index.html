@@ -11,7 +11,12 @@
         <header id="browser-top-bar">
             <div class="tabs">
                 <div class="tab active" data-target="home-content">Home.html</div>
-                <div class="tab" data-target="repos-content">Repositories.exe</div>
+                <div id="new-tab-button">+</div>
+                <div id="new-tab-menu" class="hidden">
+                    <div class="menu-item" data-target="repos-content" data-title="Repositories.exe">
+                        Repositories.exe
+                    </div>
+                </div>
             </div>
             <div class="window-controls">
                 <div class="control-button" id="button-minimise"></div>
@@ -19,7 +24,6 @@
                 <div class="control-button" id="button-close"></div>
             </div>
         </header>
-    </div>
     <main class="browser-content-area">
         <div id="home-content" class="content-pane active">
 
@@ -89,11 +93,11 @@
             </div>
         </section>
     </main>
-
-    </main>
+    </div>
     <div id="tooltip"></div>
     <footer>
         <div class="footer-links">
+            <h1 id="game-trigger" title="Carlson">Carlson</h1>
             <a href="loading.html" class="footer-link">Claim a reward...</a>
         </div>
         <p id="easter-egg-tracker"></p>

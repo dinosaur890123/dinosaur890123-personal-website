@@ -1,17 +1,72 @@
-const tabs = document.querySelectorAll('.tab');
+const tabsContainer = document.querySelectorAll('.tab');
+const newTabButton = document.getElementById('new-tab-button');
+const newTabMenu = document.getElementById('new-tab-menu');
 const contentPanes = document.querySelectorAll('.content-pane');
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const targetId = tab.dataset.target;
-        tabs.forEach(t => t.classList.remove('active'));
-        contentPanes.forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        const targetPane = document.getElementById(targetId);
-        if (targetPane) {
-            targetPane.classList.add('active');
+function deactivateAllTabs() {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.content-pane').forEach(p => p.classList.remove('active'));
+}
+function switchTab(tabElement) {
+    if (!tabElement) return;
+    deactivateAllTabs();
+    tabElement.classList.add('active');
+    const targetId = tabElement.dataset.target;
+    const targetPane = document.getElementById(targetId);
+    if (targetPane) {
+        targetPane.classList.add('active');
+    }
+}
+function createNewTab(targetId, title) {
+    const existingTab = document.querySelector(`.tab[data-target="${targetId}"]`);
+    if (existingTab) {
+        switchTab(existingTab);
+        return;
+    }
+    const newTab = document.createElement('div');
+    newTab.className = 'tab';
+    newTab.dataset.target = targetId;
+    newTab.innerHTML = `${title} <span class="close-tab">x</span>`;
+    tabsContainer.insertBefore(newTab, newTabButton);
+    switchTab(newTab);
+}
+
+tabsContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('close-tab')) {
+        e.stopPropagation();
+        const tabToClose = e.target.closest('.tab');
+        if (tabToClose) {
+            tabToClose.remove();
+            const targetId = tabToClose.dataset.target;
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) {
+                targetPane.classList.remove('active');
+            }
+            const homeTab = document.querySelector('.tab[data-target="home-content"]');
+            switchTab(homeTab);
         }
-    });
+    }
+    else if (e.target.closest('.tab')) {
+        switchTab(e.target.closest('.tab'));
+    }
 });
+newTabButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    newTabMenu.classList.toggle('hidden');
+    newTabMenu.style.left = `${newTabButton.offsetLeft}px`;
+});
+newTabMenu.addEventListener('click', (e) => {
+    if (e.target.classList.contains('menu-item')) {
+        const targetId = e.target.dataset.target;
+        const title = e.target.dataset.title;
+        createNewTab(targetId, title);
+        newTabMenu.classList.add('hidden');
+    }
+});
+window.addEventListener('click', () => {
+    if (!newTabMenu.classList.contains('hidden')) {
+        newTabMenu.classList.add('hidden');
+    }
+})
 
 
 const isHomePage = document.getElementById('home-content') !== null;
