@@ -4,16 +4,33 @@
     font-weight: normal;
     font-style: normal;
 }
+/* Nord-inspired, accessible theme variables */
+:root {
+    --bg: #2E3440;            /* base background */
+    --bg-elev-1: #3B4252;     /* elevated surfaces (cards, panels) */
+    --bg-elev-2: #434C5E;     /* headers, secondary surfaces */
+    --border: #4C566A;        /* borders, separators */
+    --text: #ECEFF4;          /* primary text */
+    --muted: #D8DEE9;         /* secondary text */
+    --muted-2: #E5E9F0;       /* light text on dark */
+    --accent: #5E81AC;        /* primary accent */
+    --accent-2: #81A1C1;      /* hover accent */
+    --accent-3: #88C0D0;      /* links */
+    --success: #A3BE8C;       /* success/positive */
+    --warning: #EBCB8B;       /* warning/notice */
+    --danger: #BF616A;        /* danger/error */
+    --link: #88C0D0;          /* link color */
+    --link-hover: #8FBCBB;    /* link hover */
+    --shadow: rgba(0,0,0,0.25);
+    --accent-rgb: 94,129,172; /* rgb of --accent for rgba() uses */
+}
 html {
     cursor: url('assets/sword.png'), auto;
 }
-p {
-    margin-left: 16px;
-}
 body {
     font-family: 'Minecraft', sans-serif;
-    background-color: #0d1b2a;
-    color: #e0e1dd;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
     background-image: url('assets/dirt-bg.png');
     background-repeat: repeat;
@@ -25,9 +42,9 @@ body {
     width: 90%;
     max-width: 1300px;
     margin: 20px auto;
-    border: 3px solid #415a77;
-    box-shadow: inset 0 0 0 3px #1b263b;
-    background-color: #1b263b;
+    border: 3px solid var(--border);
+    box-shadow: inset 0 0 0 3px var(--bg-elev-2);
+    background-color: var(--bg-elev-1);
     border-radius: 0;
     flex-grow: 1;
     display: flex;
@@ -37,8 +54,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    background-color: #0d1b2a;
-    border-bottom: 3px solid #0d1b2a;
+    background-color: var(--bg);
+    border-bottom: 3px solid var(--bg);
     padding: 0 6px 0 6px;
     user-select: none;
 }
@@ -47,10 +64,10 @@ body {
 }
 .tab {
     padding: 10px 15px;
-    background: #1b263b;
-    border: 2px solid #0d1b2a;
-    box-shadow: inset 0 0 0 2px #415a77;
-    color: #e0e1dd;
+    background: var(--bg-elev-1);
+    border: 2px solid var(--bg);
+    box-shadow: inset 0 0 0 2px var(--border);
+    color: var(--text);
     margin-right: 4px;
     margin-top: 4px;
     cursor: pointer;
@@ -62,9 +79,9 @@ body {
     padding-right: 15px; 
 }
 .tab-active {
-    background: #1b263b;
-    border-bottom-color: #1b263b;
-    box-shadow: inset 0 0 0 2px #778da9;
+    background: var(--bg-elev-1);
+    border-bottom-color: var(--bg-elev-1);
+    box-shadow: inset 0 0 0 2px var(--accent-2);
     transform: translateY(2px); 
     position: relative;
     z-index: 2;
@@ -78,22 +95,22 @@ body {
     font-weight: bold;
     font-size: 16px;
     line-height: 1;
-    color: #c0c0c0;
+    color: var(--muted);
     padding: 2px 4px;
     border-radius: 2px;
 }
 .close-tab:hover {
-    background-color: #778da9;
+    background-color: var(--accent-2);
     color: #ffffff;
 }
 #new-tab-button {
     padding: 8px 12px;
     font-size: 1.2em;
     line-height: 1;
-    background: #1b263b;
-    border: 2px solid #0d1b2a;
-    box-shadow: inset 0 0 0 2px #415a77;
-    color: #e0e1dd;
+    background: var(--bg-elev-1);
+    border: 2px solid var(--bg);
+    box-shadow: inset 0 0 0 2px var(--border);
+    color: var(--text);
     margin-left: 4px;
     margin-top: 4px;
     cursor: pointer;
@@ -104,18 +121,18 @@ body {
     border-top-right-radius: 4px;
 }
 #new-tab-btn:hover {
-    background: #415a77;
+    background: var(--border);
 }
 #new-tab-btn:active {
-    box-shadow: inset 0 0 0 2px #2b2a2a;
+    box-shadow: inset 0 0 0 2px var(--bg-elev-2);
 }
 #new-tab-menu {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #1b263b;
-    border: 2px solid #0d1b2a;
-    box-shadow: inset 0 0 0 2px #415a77;
+    background-color: var(--bg-elev-1);
+    border: 2px solid var(--bg);
+    box-shadow: inset 0 0 0 2px var(--border);
     padding: 5px;
     z-index: 100;
     min-width: 150px;
@@ -125,12 +142,12 @@ body {
 }
 .menu-item {
     padding: 8px 12px;
-    color: #d7d7d7;
+    color: var(--muted);
     cursor: pointer;
 }
 .menu-item:hover {
-    background-color: #205295;
-    box-shadow: inset 0 0 0 2px #2C74B3;
+    background-color: var(--accent);
+    box-shadow: inset 0 0 0 2px var(--accent-2);
 }
 .window-controls {
     display: flex;
@@ -140,19 +157,19 @@ body {
 .control-button {
     width: 20px;
     height: 20px;
-    border: 2px solid #0A2647;
-    box-shadow: inset 0 0 0 2px #205295;
-    background-color: #144272;
+    border: 2px solid var(--bg-elev-2);
+    box-shadow: inset 0 0 0 2px var(--accent);
+    background-color: var(--bg-elev-1);
     border-radius: 0;
 }
 #button-minimise {
-    background-color: #dcd16e;
+    background-color: var(--warning);
 }
 #button-maximise {
-    background-color: #6ac63f;
+    background-color: var(--success);
 }
 #button-close {
-    background-color: #ed4747;
+    background-color: var(--danger);
 }
 #browser-content-area {
     padding: 20px;
@@ -171,10 +188,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background: rgba(10, 38, 71, 0.7);
+    background: rgba(59, 66, 82, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); 
-    border-bottom: 1px solid rgba(32, 82, 149, 0.5);
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -182,15 +199,15 @@ header {
 .brand h1 {
     margin: 0;
     font-size: 1.8em;
-    color: #ffffff;
+    color: var(--muted-2);
 }
 .brand p {
     margin: 0;
     font-size: 0.9em;
-    color: #a0a0a0;
+    color: var(--muted);
 }
 nav a {
-    color: #e0e0e0;
+    color: var(--muted);
     text-decoration: none;
     margin-left: 25px;
     font-size: 1.1em;
@@ -199,14 +216,14 @@ nav a {
     transition: background-color 0.3s ease;
 }
 nav a:hover, nav a.active {
-    background-color: #205295;
+    background-color: var(--accent);
 }
 main.container {
     width: 90%;
     max-width: 960px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #144272;
+    background-color: var(--bg-elev-1);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
@@ -216,7 +233,7 @@ section {
 }
 h1 {
     margin: 0;
-    color: #bcbbbb;
+    color: var(--muted);
 }
 h2 {
     margin-bottom: 20px;
@@ -238,24 +255,24 @@ a:hover {
     text-decoration: underline;
 }
 a.button {
-    background-color: #205295;
-    color: white;
+    background-color: var(--accent);
+    color: var(--muted-2);
 }
 a.button:hover {
-    background-color: #2C74B3;
+    background-color: var(--accent-2);
 }
 
 button {
-    background-color: #205295; 
-    color: white;
+    background-color: var(--accent); 
+    color: var(--muted-2);
 }
 button:hover {
-    background-color: #2C74B3;
+    background-color: var(--accent-2);
 }
 #messageText {
     margin-top: 15px;
     font-weight: bold;
-    color: #22c55e;
+    color: var(--success);
 }
 #game-trigger {
     cursor: pointer;
@@ -269,14 +286,14 @@ button:hover {
     display: none;
 }
 #clicker-game {
-    background-color: #0A2647;
-    border: 1px solid #144272;
+    background-color: var(--bg-elev-2);
+    border: 1px solid var(--bg-elev-1);
     padding: 20px;
     border-radius: 8px;
 }
 #clicker-game h2 {
     margin-top: 0;
-    color: rgb(234, 150, 78);
+    color: #D08770;
 }
 #clicker-game p {
     font-size: 1.2em;
@@ -285,11 +302,11 @@ button:hover {
 #prestige-container {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #144272;
+    border-top: 1px solid var(--bg-elev-1);
 }
 #prestige-container p {
     font-size: 1em;
-    color: #f0e68c;
+    color: var(--warning);
 }
 #upgrades {
     display: flex;
@@ -308,21 +325,21 @@ button:hover {
 }
 #repo-count {
     font-style: italic;
-    color: #a0a0a0;
+    color: var(--muted);
     margin-top: 20px;
 }
 footer {
     text-align: center;
     padding: 20px;
     margin-top: 20px;
-    background-color: #0A2647;
-    border-top: 1px solid #144272;
+    background-color: var(--bg-elev-2);
+    border-top: 1px solid var(--bg-elev-1);
     font-size: 0.9em;
-    color: #a0a0a0;
+    color: var(--muted);
 }
 .repo-card {
-    background: #144272; 
-    border: 1px solid #205295;
+    background: var(--bg-elev-1); 
+    border: 1px solid var(--accent);
     padding: 20px;
     border-radius: 8px;
     transition: box-shadow 0.3s ease;
@@ -342,7 +359,7 @@ footer {
 }
 .repo-card a {
     text-decoration: none;
-    color: #2C74B3; 
+    color: var(--link); 
     font-weight: bold;
 }
 .repo-card a:hover {
@@ -350,7 +367,7 @@ footer {
 }
 .repo-card p {
     font-size: 0.9em;
-    color: #a0a0a0;
+    color: var(--muted);
 }
 #tools {
     text-align: center;
@@ -380,7 +397,7 @@ footer {
 .tool-item p {
     margin: 0;
     font-size: 0.9em;
-    color: #c0c0c0;
+    color: var(--muted);
 }
 .loading-container {
     display: flex;
@@ -393,15 +410,15 @@ footer {
 #progress-bar-container {
     width: 80%;
     max-width: 600px;
-    background-color: #0A2647;
-    border: 2px solid #144272;
+    background-color: var(--bg-elev-2);
+    border: 2px solid var(--bg-elev-1);
     border-radius: 10px;
     margin-top: 20px;
 }
 #progress-bar {
     width: 0%;
     height: 30px;
-    background-color: #205295;
+    background-color: var(--accent);
     border-radius: 8px;
     transition: width 0.1s linear;
 }
@@ -411,22 +428,22 @@ footer {
 }
 #error-message {
     margin-top: 30px;
-    color: #ff5555;
+    color: var(--danger);
     font-size: 1.5em;
 }
 #error-message button {
     margin-top: 15px;
     padding: 10px 20px;
     font-family: 'Minecraft', sans-serif;
-    background-color: #144272;
-    border: 2px solid #205295;
-    color: #ece9e9;
+    background-color: var(--bg-elev-1);
+    border: 2px solid var(--accent);
+    color: var(--muted-2);
     cursor: pointer;
     font-size: 1em;
     border-radius: 6px;
 }
 #error-message-button:hover {
-    background-color: #205295;
+    background-color: var(--accent);
 }
 .search-container {
     margin: 20px auto 0;
@@ -436,34 +453,34 @@ footer {
     width: 100%;
     padding: 12px 14px;
     font-family: 'Minecraft', sans-serif;
-    background: #0A2647;
-    color: #ece9e9;
-    border: 2px solid #144272;
+    background: var(--bg-elev-2);
+    color: var(--muted-2);
+    border: 2px solid var(--bg-elev-1);
     border-radius: 6px;
     outline: none;
-    box-shadow: inset 0 2px 0 #0A2647,0 2px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 2px 0 var(--bg-elev-2), 0 2px 0 rgba(0,0,0,0.25);
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 #search-bar button:hover {
-    color: #9b987f;
+    color: var(--warning);
 }
 #search-bar:focus {
-    border-color: #2C74B3;
-    box-shadow: 0 0 0 3px rgba(44, 116, 179, 0.2), inset 0 2px 0 #0A2647;
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2), inset 0 2px 0 var(--bg-elev-2);
 }
 .mc-not-found {
     text-align: center;
 }
 .mc-title {
-    color: #2C74B3;
+    color: var(--accent-2);
     margin-bottom: 10px;
 }
 .mc-subtitle code {
-    background: #0A2647;
-    border: 1px solid #144272;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--bg-elev-1);
     padding: 2px 6px;
     border-radius: 4px;
-    color: #c5c5c5;
+    color: var(--muted);
 }
 .mc-scene {
     display: flex;
@@ -475,7 +492,7 @@ footer {
     max-width: 60vw;
     height: auto;
     image-rendering: pixelated;
-    border: 1px solid #144272;
+    border: 1px solid var(--bg-elev-1);
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
@@ -487,8 +504,8 @@ footer {
 }
 #tooltip {
     position: fixed;
-    background-color: #0A2647;
-    color: #efe7e7;
+    background-color: var(--bg-elev-2);
+    color: var(--muted-2);
     padding: 10px 15px;
     border-radius: 6px;
     font-size: 0.9em;
@@ -500,7 +517,7 @@ footer {
 .tool-item p {
     margin: 0;
     font-size: 0.9em;
-    color: #cdc9c9;
+    color: var(--muted);
 }
 #guestbook-entries {
     max-width: 600px;
@@ -508,16 +525,16 @@ footer {
     text-align: left;
 }
 .guestbook-entry {
-    background: #144272;
-    border: 2px solid #205295;
-    box-shadow: inset 0 0 0 2px #2C74B3;
+    background: var(--bg-elev-1);
+    border: 2px solid var(--accent);
+    box-shadow: inset 0 0 0 2px var(--accent-2);
     padding: 15px 20px;
     margin-bottom: 15px;
     animation: fadeInUp 0.5s ease-out forwards;
 }
 .guestbook-entry h4 {
     margin: 0 0 10px 0;
-    color: #2C74B3;
+    color: var(--accent-2);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -525,12 +542,12 @@ footer {
 }
 .guestbook-entry .entry-date {
     font-size: 0.8em;
-    color: #9f9a9a;
+    color: var(--muted);
     font-weight: normal;
 }
 .guestbook-entry p {
     margin: 0;
-    color: #dcd4d4;
+    color: var(--muted-2);
     white-space: pre-wrap;
     word-break: break-word;
 }
@@ -547,12 +564,12 @@ footer {
     width: 100%;
     padding: 12px 14px;
     font-family: 'Minecraft', sans-serif;
-    background: #0A2647;
-    color: #e8e0e0;
-    border: 2px solid #144272;
+    background: var(--bg-elev-2);
+    color: var(--muted-2);
+    border: 2px solid var(--bg-elev-1);
     border-radius: 0;
     outline: none;
-    box-shadow: inset 0 2px 0 #0A2647, 0 2px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 2px 0 var(--bg-elev-2), 0 2px 0 rgba(0,0,0,0.25);
     transition: border-color .15s ease, box-shadow .15s ease;
     resize: vertical;
     box-sizing: border-box;
@@ -562,13 +579,13 @@ footer {
 }
 .mc-form input[type="text"]:focus,
 .mc-form textarea:focus {
-    border-color: #2C74B3;
-    box-shadow: 0 0 0 3px rgba(44, 116, 179, 0.2), inset 0 2px 0 #0A2647;
+    border-color: var(--accent-2);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2), inset 0 2px 0 var(--bg-elev-2);
 }
 .mc-form button[type="submit"]:disabled {
-    background-color: #0A2647;
-    box-shadow: inset 0 0 0 2px #144272;
-    color: #787373;
+    background-color: var(--bg-elev-2);
+    box-shadow: inset 0 0 0 2px var(--bg-elev-1);
+    color: var(--border);
     cursor: not-allowed;
 }
 @keyframes fadeInUp {
