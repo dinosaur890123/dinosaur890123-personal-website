@@ -12,8 +12,8 @@ p {
 }
 body {
     font-family: 'Minecraft', sans-serif;
-    background-color: #0A2647;
-    color: #e0e0e0;
+    background-color: #0d1b2a;
+    color: #e0e1dd;
     margin: 0;
     background-image: url('assets/dirt-bg.png');
     background-repeat: repeat;
@@ -25,9 +25,9 @@ body {
     width: 90%;
     max-width: 1300px;
     margin: 20px auto;
-    border: 3px solid #144272;
-    box-shadow: inset 0 0 0 3px #205295;
-    background-color: #0A2647;
+    border: 3px solid #415a77;
+    box-shadow: inset 0 0 0 3px #1b263b;
+    background-color: #1b263b;
     border-radius: 0;
     flex-grow: 1;
     display: flex;
@@ -37,8 +37,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    background-color: #144272;
-    border-bottom: 3px solid #0A2647;
+    background-color: #0d1b2a;
+    border-bottom: 3px solid #0d1b2a;
     padding: 0 6px 0 6px;
     user-select: none;
 }
@@ -47,10 +47,10 @@ body {
 }
 .tab {
     padding: 10px 15px;
-    background: #0A2647;
-    border: 2px solid #144272;
-    box-shadow: inset 0 0 0 2px #205295;
-    color: #ece9e9;
+    background: #1b263b;
+    border: 2px solid #0d1b2a;
+    box-shadow: inset 0 0 0 2px #415a77;
+    color: #e0e1dd;
     margin-right: 4px;
     margin-top: 4px;
     cursor: pointer;
@@ -62,9 +62,9 @@ body {
     padding-right: 15px; 
 }
 .tab-active {
-    background: #205295;
-    border-bottom-color: #205295;
-    box-shadow: inset 0 0 0 2px #2C74B3;
+    background: #1b263b;
+    border-bottom-color: #1b263b;
+    box-shadow: inset 0 0 0 2px #778da9;
     transform: translateY(2px); 
     position: relative;
     z-index: 2;
@@ -83,17 +83,17 @@ body {
     border-radius: 2px;
 }
 .close-tab:hover {
-    background-color: #2C74B3;
+    background-color: #778da9;
     color: #ffffff;
 }
 #new-tab-button {
     padding: 8px 12px;
     font-size: 1.2em;
     line-height: 1;
-    background: #0A2647;
-    border: 2px solid #144272;
-    box-shadow: inset 0 0 0 2px #205295;
-    color: #ece9e9;
+    background: #1b263b;
+    border: 2px solid #0d1b2a;
+    box-shadow: inset 0 0 0 2px #415a77;
+    color: #e0e1dd;
     margin-left: 4px;
     margin-top: 4px;
     cursor: pointer;
@@ -104,7 +104,7 @@ body {
     border-top-right-radius: 4px;
 }
 #new-tab-btn:hover {
-    background: #144272;
+    background: #415a77;
 }
 #new-tab-btn:active {
     box-shadow: inset 0 0 0 2px #2b2a2a;
@@ -113,9 +113,9 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #144272;
-    border: 2px solid #0A2647;
-    box-shadow: inset 0 0 0 2px #205295;
+    background-color: #1b263b;
+    border: 2px solid #0d1b2a;
+    box-shadow: inset 0 0 0 2px #415a77;
     padding: 5px;
     z-index: 100;
     min-width: 150px;
