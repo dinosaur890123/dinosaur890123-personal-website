@@ -189,7 +189,66 @@ if (isHomePage) {
         }
     }, 1000);
 }
-
+function setupParticleBackground() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleOptions = {
+        count: 50,
+        speed: 0.5,
+        minSize: 2,
+        maxSize: 5,
+        color: 'rgba(61, 123, 224, 0.3)'
+    };
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * (particleOptions.maxSize - particleOptions.minSize) + particleOptions.minSize;
+            this.speedX = (Math.random() * 2 - 1) * particleOptions.speed;
+            this.speedY = (Math.random() * 2 - 1) * particleOptions.speed;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                Object.assign(this, new Particle());
+                this.y = canvas.height;
+            }
+        }
+        draw() {
+            ctx.fillStyle = particleOptions.color;
+            ctx.fillRect(this.x, this.y, this.size, this.size);
+        }
+    }
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < particleOptions.count; i++) {
+            particles.push(new Particle());
+        }
+    }
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+    });
+    resizeCanvas();
+    initParticles();
+    animate();
+}
+document.addEventListener('DOMContentLoaded', setupParticleBackground);
 const username = "dinosaur890123";
 async function getGithubRepoCount() {
     try {
