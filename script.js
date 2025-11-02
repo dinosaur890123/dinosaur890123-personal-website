@@ -416,18 +416,7 @@ function initGuestbook() {
         messagingSenderId: "318702901263",
         appId: "1:318702901263:web:8c63a8d18d29eddb266b7a"
     };
-    if (firebaseConfig.apiKey === "AIzaSyD2oElbev2pExyoThX6b0xRyuiWeWhmdKs") {
-        const contentArea = document.getElementById('browser-content-area');
-        if (contentArea) {
-            contentArea.innerHTML = `
-            <div>
-                <h2>Config error<h2>
-                <p>Firebase project keys missing</p>
-            </div>
-            `;
-        }
-        return;
-    }
+    
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
     auth = getAuth(app);
