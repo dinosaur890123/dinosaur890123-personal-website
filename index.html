@@ -16,6 +16,9 @@
                     <div class="menu-item" data-target="repos-content" data-title="Repositories.exe">
                         Repositories.exe
                     </div>
+                     <div class="menu-item" data-target="guestbook-content" data-title="Guestbook.exe">
+                        Guestbook.exe
+                    </div>
                 </div>
             </div>
             <div class="window-controls">
@@ -82,16 +85,26 @@
         </section>
         </div>
         <div id="repos-content" class="content-pane">
-                <section id="all-projects-section">
-                    <h2>My public repositories</h2>
-                    <div class="search-container">
-                        <input type="text" id="search-bar" placeholder="Search for one of my projects...">
-                    </div>
-                    <div id="all-repo-list">
-                    </div>
-                </section>
+            <section id="all-projects-section">
+                <h2>My public repositories</h2>
+                <div class="search-container">
+                    <input type="text" id="search-bar" placeholder="Search for one of my projects...">
+                </div>
+                <div id="all-repo-list"></div>
+            </section>
+        </div>
+        <div id="guestbook-content" class="content-pane">
+            <h2>Guestbook</h2>
+            <p>You can leave a message and say hi!</p>
+            <form id="guestbook-form" class="mc-form">
+                <input type="text" id="guest-name" placeholder="Your Name" required maxlength="50">
+                <textarea id="guest-message" placeholder="Your Message (max 280 characters)" required maxlength="280"></textarea>
+                <button type="submit">Sign guestbook</button>
+            </form>
+            <div id="guestbook-entries">
+                <p>Loading entries...</p>
             </div>
-        </section>
+        </div>
     </main>
     </div>
     <div id="tooltip"></div>
@@ -103,6 +116,6 @@
         <p id="easter-egg-tracker"></p>
         <p>Built by me in 2025!</p>
     </footer>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

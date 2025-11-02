@@ -1,3 +1,8 @@
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import {getAuth, signInAnonymously} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import {getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp, setLogLevel} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+let db, auth;
+
 const tabsContainer = document.querySelector('.tabs');
 const newTabButton = document.getElementById('new-tab-button');
 const newTabMenu = document.getElementById('new-tab-menu');
@@ -306,17 +311,139 @@ function init() {
     updateEasterEggDisplay();
     enableTooltips();
 }
-init();
-newTabMenu.addEventListener('click', (e) => {
-    if (e.target.classList.contains('menu-item')) {
-        const targetId = e.target.dataset.target;
-        const title = e.target.dataset.title;
-        if (targetId === 'repos-content' && !reposLoaded) {
-            getAllGithubRepos();
-            enableRepoSearch();
-            reposLoaded = true;
+if (newTabMenu) {
+    newTabMenu.addEventListener('click', (e) => {
+        if (e.target.classList.contains('menu-item')) {
+            const targetId = e.target.dataset.target;
+            const title = e.target.dataset.title;
+            if (targetId === 'repos-content' && !reposLoaded) {
+                getAllGithubRepos();
+                enableRepoSearch();
+                reposLoaded = true;
+            }
+            if (targetId === 'guestbook-content' && !guestbookLoaded) {
+                initGuestbook();
+                guestbookLoaded = true;
+            }
+            createNewTab(targetId, title);
+            newTabMenu.classList.add('hidden');
         }
-        createNewTab(targetId, title);
-        newTabMenu.classList.add('hidden');
+    })
+}
+function initGuestbook() {
+    const guestbookForm = document.getElementById('guestbook-form');
+    const guestbookEntries = document.getElementById('guestbook-entries');
+    if (guestbookForm) {
+        guestbookForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nameInput = document.getElementById('guest-name');
+            const messageInput = document.getElementById('guest-message');
+            const submitButton = guestbookForm.querySelector('button[type="submit"]');
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+            if (name && message) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Posting...';
+                try {
+                    const guestbookCol = collection(db, 'guestbook');
+                    await addDoc(guestbookCol, {
+                        name: name,
+                        message: message,
+                        createdAt: serverTimestamp()
+                    });
+                    nameInput.value = '';
+                    messageInput.value = '';
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                    alert("Error saving message. Try again pls.");
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Sign Guestbook';
+                }
+            }
+        });
     }
-})
+    if (guestbookEntries) {
+        const guestbookCol = collection(db, 'guestbook');
+        const q = query(guestbookCol); 
+        onSnapshot(q, (snapshot) => {
+            guestbookEntries.innerHTML = '';
+            let entries = [];
+            snapshot.docs.forEach(doc => {
+                entries.push(doc.data());
+            });
+            entries.sort((a,b) => {
+                const aTime = a.createdAt?.seconds || 0;
+                const bTime = b.createdAt?.seconds || 0;
+                return bTime - aTime;
+            });
+            if (entries.length === 0) {
+                guestbookEntries.innerHTML = '<p>No entries yet. Be the first!</p>';
+                return;
+            }
+            entries.forEach(entry => {
+                const entryEl = document.createElement('div');
+                entryEl.className = 'guestbook-entry';
+                const entryHeader = document.createElement('h4');
+                entryHeader.textContent = entry.name;
+                if (entry.createdAt) {
+                    const date = new Date(entry.createdAt.seconds * 1000);
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'entry-date';
+                    dateSpan.textContent = date.toLocaleString();
+                    entryHeader.appendChild(dateSpan);
+                }
+                const entryMsg = document.createElement('p');
+                entryMsgtextContent = entry.message;
+                entryEl.appendChild(entryHeader);
+                entryEl.appendChild(entryMsg);
+                guestbookEntries.appendChild(entryEl);
+            });
+        }, (error) => {
+            console.error("Error fetching guestbook", error);
+            guestbookEntries.innerHTML = '<p>Could not load guestbook entries.</p>';
+        });
+    }
+}
+(async () => {
+    try {
+        const firebaseConfig = {
+        apiKey: "AIzaSyD2oElbev2pExyoThX6b0xRyuiWeWhmdKs",
+        authDomain: "dinosaur890123-personal-site.firebaseapp.com",
+        projectId: "dinosaur890123-personal-site",
+        storageBucket: "dinosaur890123-personal-site.firebasestorage.app",
+        messagingSenderId: "318702901263",
+        appId: "1:318702901263:web:8c63a8d18d29eddb266b7a"
+    };
+    if (firebaseConfig.apiKey === "AIzaSyD2oElbev2pExyoThX6b0xRyuiWeWhmdKs") {
+        console.warn("Firebase config is missing.");
+        const contentArea = document.getElementById('browser-content-area');
+        if (contentArea) {
+            contentArea.innerHTML = `
+            <div>
+                <h2>Config error<h2>
+                <p>Firebase project keys missing</p>
+            </div>
+            `;
+        }
+        return;
+    }
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+    auth = getAuth(app);
+    setLogLevel('Debug');
+    await signInAnonymously(auth);
+    console.log('Firebase auth completed. User UID:', auth.currentUser?.uid);
+    init();
+    } catch (error) {
+        console.error("Firebase failed", error);
+        const contentArea = document.getElementById('browser-content-area');
+        if (contentArea) {
+            contentArea.innerHTML = `
+            <div>
+                <h2>Connection error</h2>
+            </div>
+            `
+        }
+    }
+})();
