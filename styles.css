@@ -4,25 +4,24 @@
     font-weight: normal;
     font-style: normal;
 }
-/* Nord-inspired, accessible theme variables */
 :root {
-    --bg: #2E3440;            /* base background */
-    --bg-elev-1: #3B4252;     /* elevated surfaces (cards, panels) */
-    --bg-elev-2: #434C5E;     /* headers, secondary surfaces */
-    --border: #4C566A;        /* borders, separators */
-    --text: #ECEFF4;          /* primary text */
-    --muted: #D8DEE9;         /* secondary text */
-    --muted-2: #E5E9F0;       /* light text on dark */
-    --accent: #5E81AC;        /* primary accent */
-    --accent-2: #81A1C1;      /* hover accent */
-    --accent-3: #88C0D0;      /* links */
-    --success: #A3BE8C;       /* success/positive */
-    --warning: #EBCB8B;       /* warning/notice */
-    --danger: #BF616A;        /* danger/error */
-    --link: #88C0D0;          /* link color */
-    --link-hover: #8FBCBB;    /* link hover */
+    --bg: #0B1020;
+    --bg-elev-1: #121C2E;
+    --bg-elev-2: #17233A;
+    --border: #1F3A5F;
+    --text: #E6EEF8;
+    --muted: #C5D3E6;
+    --muted-2: #F1F5FB;
+    --accent: #3D7BE0;
+    --accent-2: #5C95EA;
+    --accent-3: #7CB3F2;
+    --success: #59C08D;
+    --warning: #F2C361;
+    --danger: #E26B6B;
+    --link: #7CB3F2;
+    --link-hover: #8EC1F5;
     --shadow: rgba(0,0,0,0.25);
-    --accent-rgb: 94,129,172; /* rgb of --accent for rgba() uses */
+    --accent-rgb: 61,123,224;
 }
 html {
     cursor: url('assets/sword.png'), auto;
@@ -76,13 +75,13 @@ body {
     border-top-right-radius: 4px;
 }
 .tab[data-target="home-content"] {
-    padding-right: 15px; 
+    padding-right: 15px;
 }
 .tab-active {
     background: var(--bg-elev-1);
     border-bottom-color: var(--bg-elev-1);
     box-shadow: inset 0 0 0 2px var(--accent-2);
-    transform: translateY(2px); 
+    transform: translateY(2px);
     position: relative;
     z-index: 2;
 }
@@ -184,21 +183,21 @@ body {
     animation: fadeInUp 0.5s ease-out forwards;
 }
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: rgba(59, 66, 82, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); 
-    border-bottom: 1px solid rgba(var(--accent-rgb), 0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-.brand h1 {
-    margin: 0;
-    font-size: 1.8em;
+    --bg: #0B1020;
+    --bg-elev-1: #121C2E;
+    --bg-elev-2: #17233A;
+    --border: #1F3A5F;
+    --text: #E6EEF8;
+    --muted: #C5D3E6;
+    --muted-2: #F1F5FB;
+    --accent: #3D7BE0;
+    --accent-2: #5C95EA;
+    --accent-3: #7CB3F2;
+    --success: #59C08D;
+    --warning: #F2C361;
+    --danger: #E26B6B;
+    --link: #7CB3F2;
+    --link-hover: #8EC1F5;
     color: var(--muted-2);
 }
 .brand p {
@@ -225,7 +224,7 @@ main.container {
     padding: 20px;
     background-color: var(--bg-elev-1);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 section {
     text-align: center;
@@ -263,7 +262,7 @@ a.button:hover {
 }
 
 button {
-    background-color: var(--accent); 
+    background-color: var(--accent);
     color: var(--muted-2);
 }
 button:hover {
@@ -338,7 +337,7 @@ footer {
     color: var(--muted);
 }
 .repo-card {
-    background: var(--bg-elev-1); 
+    background: var(--bg-elev-1);
     border: 1px solid var(--accent);
     padding: 20px;
     border-radius: 8px;
@@ -359,7 +358,7 @@ footer {
 }
 .repo-card a {
     text-decoration: none;
-    color: var(--link); 
+    color: var(--link);
     font-weight: bold;
 }
 .repo-card a:hover {
