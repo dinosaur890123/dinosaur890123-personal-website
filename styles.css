@@ -60,6 +60,7 @@ body {
 }
 .tabs {
     display: flex;
+    position: relative;
 }
 .tab {
     padding: 10px 15px;
