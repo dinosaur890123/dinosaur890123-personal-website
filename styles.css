@@ -7,6 +7,9 @@
 html {
     cursor: url('assets/sword.png'), auto;
 }
+p {
+    margin-left: 16px;
+}
 body {
     font-family: 'Minecraft', sans-serif;
     background-color: #263347;
@@ -217,6 +220,7 @@ h1 {
 }
 h2 {
     margin-bottom: 20px;
+    margin-left: 16px;
 }
 a.button, button {
     display: inline-block;
