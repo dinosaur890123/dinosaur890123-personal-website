@@ -73,6 +73,7 @@ window.addEventListener('click', () => {
     }
 })
 let reposLoaded = false;
+let guestbookLoaded = false;
 const isHomePage = document.getElementById('home-content') !== null;
 const isReposPage = document.getElementById('all-projects-section') !== null;
 if (isHomePage) {
