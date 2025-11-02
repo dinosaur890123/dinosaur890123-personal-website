@@ -530,6 +530,41 @@ footer {
     white-space: pre-wrap;
     word-break: break-word;
 }
+.mc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+}
+.mc-form input[type="text"],
+.mc-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Minecraft', sans-serif;
+    background: #232833;
+    color: #e8e0e0;
+    border: 2px solid #2a2f48;
+    border-radius: 0;
+    outline: none;
+    box-shadow: inset 0 2px 0 #232838, 0 2px 0 rgba(0,0,0,0.25);
+    transition: border-color .15s ease, box-shadow .15s ease;
+    resize: vertical;
+    box-sizing: border-box;
+}
+.mc-form textarea {
+    min-height: 80px;
+}
+.mc-form input[type="text"]:focus,
+.mc-form textarea:focus {
+    border-color: #36a420;
+    box-shadow: 0 0 0 3px rgba(54,164,32,0.2), inset 0 2px 0 #1c1a11;
+}
+.mc-form button[type="submit"]:disabled {
+    background-color: #363333;
+    box-shadow: inset 0 0 0 2px #5a5959;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;

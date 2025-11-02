@@ -416,7 +416,6 @@ function initGuestbook() {
         messagingSenderId: "318702901263",
         appId: "1:318702901263:web:8c63a8d18d29eddb266b7a"
     };
-    
     const app = initializeApp(firebaseConfig);
     db = getFirestore(app);
     auth = getAuth(app);
