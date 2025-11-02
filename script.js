@@ -394,7 +394,7 @@ function initGuestbook() {
                     entryHeader.appendChild(dateSpan);
                 }
                 const entryMsg = document.createElement('p');
-                entryMsgtextContent = entry.message;
+                entryMsg.textContent = entry.message;
                 entryEl.appendChild(entryHeader);
                 entryEl.appendChild(entryMsg);
                 guestbookEntries.appendChild(entryEl);
