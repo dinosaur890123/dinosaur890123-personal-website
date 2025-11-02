@@ -416,7 +416,6 @@ function initGuestbook() {
         appId: "1:318702901263:web:8c63a8d18d29eddb266b7a"
     };
     if (firebaseConfig.apiKey === "AIzaSyD2oElbev2pExyoThX6b0xRyuiWeWhmdKs") {
-        console.warn("Firebase config is missing.");
         const contentArea = document.getElementById('browser-content-area');
         if (contentArea) {
             contentArea.innerHTML = `
