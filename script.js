@@ -215,7 +215,7 @@ async function getLatestGithubRepos() {
         const repos = await response.json();
         const repoListElement = document.getElementById("repo-list");
         repoListElement.innerHTML = ''; 
-        repos.slice(0, 6).forEach(repo => {
+        repos.slice(0, 8).forEach(repo => {
             const description = repo.description || 'No description';
             const language = repo.language ? `<p class="repo-language">${repo.language}</p>` : '';
             repoListElement.innerHTML += `
