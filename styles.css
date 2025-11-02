@@ -12,7 +12,7 @@ p {
 }
 body {
     font-family: 'Minecraft', sans-serif;
-    background-color: #263347;
+    background-color: #0A2647;
     color: #e0e0e0;
     margin: 0;
     background-image: url('assets/dirt-bg.png');
@@ -25,9 +25,9 @@ body {
     width: 90%;
     max-width: 1300px;
     margin: 20px auto;
-    border: 3px solid #302f2f;
-    box-shadow: inset 0 0 0 3px #545454;
-    background-color: #1e1e1e;
+    border: 3px solid #144272;
+    box-shadow: inset 0 0 0 3px #205295;
+    background-color: #0A2647;
     border-radius: 0;
     flex-grow: 1;
     display: flex;
@@ -37,8 +37,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    background-color: #3a3838;
-    border-bottom: 3px solid #1a1919;
+    background-color: #144272;
+    border-bottom: 3px solid #0A2647;
     padding: 0 6px 0 6px;
     user-select: none;
 }
@@ -47,9 +47,9 @@ body {
 }
 .tab {
     padding: 10px 15px;
-    background: #313030;
-    border: 2px solid #1c1b1b;
-    box-shadow: inset 0 0 0 2px #646262;
+    background: #0A2647;
+    border: 2px solid #144272;
+    box-shadow: inset 0 0 0 2px #205295;
     color: #ece9e9;
     margin-right: 4px;
     margin-top: 4px;
@@ -62,9 +62,9 @@ body {
     padding-right: 15px; 
 }
 .tab-active {
-    background: #292828;
-    border-bottom-color: #201d1d;
-    box-shadow: inset 0 0 0 2px #5a5959;
+    background: #205295;
+    border-bottom-color: #205295;
+    box-shadow: inset 0 0 0 2px #2C74B3;
     transform: translateY(2px); 
     position: relative;
     z-index: 2;
@@ -83,16 +83,16 @@ body {
     border-radius: 2px;
 }
 .close-tab:hover {
-    background-color: #f04242;
+    background-color: #2C74B3;
     color: #ffffff;
 }
 #new-tab-button {
     padding: 8px 12px;
     font-size: 1.2em;
     line-height: 1;
-    background: #252424;
-    border: 2px solid #2b2a2a;
-    box-shadow: inset 0 0 0 2px #504e4e;
+    background: #0A2647;
+    border: 2px solid #144272;
+    box-shadow: inset 0 0 0 2px #205295;
     color: #ece9e9;
     margin-left: 4px;
     margin-top: 4px;
@@ -104,7 +104,7 @@ body {
     border-top-right-radius: 4px;
 }
 #new-tab-btn:hover {
-    background: #3c3a3a;
+    background: #144272;
 }
 #new-tab-btn:active {
     box-shadow: inset 0 0 0 2px #2b2a2a;
@@ -113,9 +113,9 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #434040;
-    border: 2px solid #242323;
-    box-shadow: inset 0 0 0 2px #646262;
+    background-color: #144272;
+    border: 2px solid #0A2647;
+    box-shadow: inset 0 0 0 2px #205295;
     padding: 5px;
     z-index: 100;
     min-width: 150px;
@@ -129,8 +129,8 @@ body {
     cursor: pointer;
 }
 .menu-item:hover {
-    background-color: #4e4d4d;
-    box-shadow: inset 0 0 0 2px #7a7878;
+    background-color: #205295;
+    box-shadow: inset 0 0 0 2px #2C74B3;
 }
 .window-controls {
     display: flex;
@@ -140,9 +140,9 @@ body {
 .control-button {
     width: 20px;
     height: 20px;
-    border: 2px solid #2f2d2d;
-    box-shadow: inset 0 0 0 2px #646262;
-    background-color: #3d3c3c;
+    border: 2px solid #0A2647;
+    box-shadow: inset 0 0 0 2px #205295;
+    background-color: #144272;
     border-radius: 0;
 }
 #button-minimise {
@@ -171,10 +171,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 5%;
-    background: rgba(30, 30, 30, 0.7);
+    background: rgba(10, 38, 71, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); 
-    border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+    border-bottom: 1px solid rgba(32, 82, 149, 0.5);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -199,14 +199,14 @@ nav a {
     transition: background-color 0.3s ease;
 }
 nav a:hover, nav a.active {
-    background-color: #444444;
+    background-color: #205295;
 }
 main.container {
     width: 90%;
     max-width: 960px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #1e1e1e;
+    background-color: #144272;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
@@ -238,19 +238,19 @@ a:hover {
     text-decoration: underline;
 }
 a.button {
-    background-color: #555555;
+    background-color: #205295;
     color: white;
 }
 a.button:hover {
-    background-color: #777777;
+    background-color: #2C74B3;
 }
 
 button {
-    background-color: #00796b; 
+    background-color: #205295; 
     color: white;
 }
 button:hover {
-    background-color: #36a420;
+    background-color: #2C74B3;
 }
 #messageText {
     margin-top: 15px;
@@ -269,8 +269,8 @@ button:hover {
     display: none;
 }
 #clicker-game {
-    background-color: #2a2718;
-    border: 1px solid #4d4624;
+    background-color: #0A2647;
+    border: 1px solid #144272;
     padding: 20px;
     border-radius: 8px;
 }
@@ -285,7 +285,7 @@ button:hover {
 #prestige-container {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid #4d4624;
+    border-top: 1px solid #144272;
 }
 #prestige-container p {
     font-size: 1em;
@@ -315,14 +315,14 @@ footer {
     text-align: center;
     padding: 20px;
     margin-top: 20px;
-    background-color: #2b2828;
-    border-top: 1px solid #333;
+    background-color: #0A2647;
+    border-top: 1px solid #144272;
     font-size: 0.9em;
     color: #a0a0a0;
 }
 .repo-card {
-    background: #292929; 
-    border: 1px solid #404040;
+    background: #144272; 
+    border: 1px solid #205295;
     padding: 20px;
     border-radius: 8px;
     transition: box-shadow 0.3s ease;
@@ -342,7 +342,7 @@ footer {
 }
 .repo-card a {
     text-decoration: none;
-    color: #64b5f6; 
+    color: #2C74B3; 
     font-weight: bold;
 }
 .repo-card a:hover {
@@ -393,15 +393,15 @@ footer {
 #progress-bar-container {
     width: 80%;
     max-width: 600px;
-    background-color: #1e1e1e;
-    border: 2px solid #404040;
+    background-color: #0A2647;
+    border: 2px solid #144272;
     border-radius: 10px;
     margin-top: 20px;
 }
 #progress-bar {
     width: 0%;
     height: 30px;
-    background-color: #4c499c;
+    background-color: #205295;
     border-radius: 8px;
     transition: width 0.1s linear;
 }
@@ -418,15 +418,15 @@ footer {
     margin-top: 15px;
     padding: 10px 20px;
     font-family: 'Minecraft', sans-serif;
-    background-color: #3d3c3c;
-    border: 2px solid #646262;
+    background-color: #144272;
+    border: 2px solid #205295;
     color: #ece9e9;
     cursor: pointer;
     font-size: 1em;
     border-radius: 6px;
 }
 #error-message-button:hover {
-    background-color: #555252;
+    background-color: #205295;
 }
 .search-container {
     margin: 20px auto 0;
@@ -436,31 +436,31 @@ footer {
     width: 100%;
     padding: 12px 14px;
     font-family: 'Minecraft', sans-serif;
-    background: #2a2718;
+    background: #0A2647;
     color: #ece9e9;
-    border: 2px solid #4d4624;
+    border: 2px solid #144272;
     border-radius: 6px;
     outline: none;
-    box-shadow: inset 0 2px 0 #1c1a11,0 2px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 2px 0 #0A2647,0 2px 0 rgba(0,0,0,0.25);
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 #search-bar button:hover {
     color: #9b987f;
 }
 #search-bar:focus {
-    border-color: #36a420;
-    box-shadow: 0 0 0 3px rgba(54,164,32,0.2), inset 0 2px 0 #1c1a11;
+    border-color: #2C74B3;
+    box-shadow: 0 0 0 3px rgba(44, 116, 179, 0.2), inset 0 2px 0 #0A2647;
 }
 .mc-not-found {
     text-align: center;
 }
 .mc-title {
-    color: #8BC34A;
+    color: #2C74B3;
     margin-bottom: 10px;
 }
 .mc-subtitle code {
-    background: #1a1a1a;
-    border: 1px solid #333;
+    background: #0A2647;
+    border: 1px solid #144272;
     padding: 2px 6px;
     border-radius: 4px;
     color: #c5c5c5;
@@ -475,7 +475,7 @@ footer {
     max-width: 60vw;
     height: auto;
     image-rendering: pixelated;
-    border: 1px solid #404040;
+    border: 1px solid #144272;
     border-radius: 8px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
@@ -487,7 +487,7 @@ footer {
 }
 #tooltip {
     position: fixed;
-    background-color: #0d0d0d;
+    background-color: #0A2647;
     color: #efe7e7;
     padding: 10px 15px;
     border-radius: 6px;
@@ -508,16 +508,16 @@ footer {
     text-align: left;
 }
 .guestbook-entry {
-    background: #262626;
-    border: 2px solid #282626;
-    box-shadow: inset 0 0 0 2px #504e4e;
+    background: #144272;
+    border: 2px solid #205295;
+    box-shadow: inset 0 0 0 2px #2C74B3;
     padding: 15px 20px;
     margin-bottom: 15px;
     animation: fadeInUp 0.5s ease-out forwards;
 }
 .guestbook-entry h4 {
     margin: 0 0 10px 0;
-    color: #5baaeb;
+    color: #2C74B3;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -547,12 +547,12 @@ footer {
     width: 100%;
     padding: 12px 14px;
     font-family: 'Minecraft', sans-serif;
-    background: #232833;
+    background: #0A2647;
     color: #e8e0e0;
-    border: 2px solid #2a2f48;
+    border: 2px solid #144272;
     border-radius: 0;
     outline: none;
-    box-shadow: inset 0 2px 0 #232838, 0 2px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 2px 0 #0A2647, 0 2px 0 rgba(0,0,0,0.25);
     transition: border-color .15s ease, box-shadow .15s ease;
     resize: vertical;
     box-sizing: border-box;
@@ -562,12 +562,12 @@ footer {
 }
 .mc-form input[type="text"]:focus,
 .mc-form textarea:focus {
-    border-color: #36a420;
-    box-shadow: 0 0 0 3px rgba(54,164,32,0.2), inset 0 2px 0 #1c1a11;
+    border-color: #2C74B3;
+    box-shadow: 0 0 0 3px rgba(44, 116, 179, 0.2), inset 0 2px 0 #0A2647;
 }
 .mc-form button[type="submit"]:disabled {
-    background-color: #363333;
-    box-shadow: inset 0 0 0 2px #5a5959;
+    background-color: #0A2647;
+    box-shadow: inset 0 0 0 2px #144272;
     color: #787373;
     cursor: not-allowed;
 }
