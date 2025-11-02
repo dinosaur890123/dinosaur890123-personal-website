@@ -104,7 +104,7 @@ body {
     color: #ffffff;
 }
 #new-tab-button {
-    padding: 8px 12px;
+    padding: 10px 15px;
     font-size: 1.2em;
     line-height: 1;
     background: var(--bg-elev-1);
@@ -115,8 +115,6 @@ body {
     margin-top: 4px;
     cursor: pointer;
     user-select: none;
-    align-self: flex-end;
-    margin-bottom: -2px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
