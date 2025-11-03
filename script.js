@@ -363,6 +363,34 @@ function enableTooltips() {
         })
     });
 }
+function setupCritterTalk() {
+    const critter = document.getElementById('critter');
+    const dialog = document.getElementById('critter-dialog');
+    const messageElement = document.getElementById('critter-message');
+    const messages = [
+        "Hi!",
+        "Meow!",
+        "Have you found the secret clicker game?",
+        "Try opening a new tab with the + Button",
+        "yay you clicked me!",
+        "this guy has a lot of cool projects right?",
+        "Go sign the guestbook and stop clicking on me!"
+    ];
+    let lastMessageIndex = -1;
+    critter.addEventListener('mouseenter', () => {
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * messages.length);
+        } while (randomIndex === lastMessageIndex);
+        lastMessageIndex = randomIndex;
+        messageEl.textContent = messages[randomIndex];
+        dialog.classList.remove('hidden');
+        setTimeout(() => dialog.classList.add('visible'), 10);
+    });
+    critter.addEventListener('mouseleave', () => {
+        dialog.classList.remove('visible');
+    });
+}
 function init() {
     if (isHomePage) {
         getGithubRepoCount();
@@ -370,6 +398,7 @@ function init() {
     }
     updateEasterEggDisplay();
     enableTooltips();
+    setupCritterTalk()l
 }
 if (newTabMenu) {
     newTabMenu.addEventListener('click', (e) => {

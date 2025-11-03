@@ -606,6 +606,41 @@ footer {
     animation: critter-bob 4s ease-in-out infinite;
     image-rendering: pixelated;
 }
+#critter-dialog {
+    position: fixed;
+    bottom: 100px;
+    left: 45px;
+    background-color: var(--bg-elev-1);
+    border: 2px solid var(--border);
+    box-shadow: inset 0 0 0 2px var(--bg-elev-2);
+    padding: 15px;
+    width: 220px;
+    z-index: 9;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+#critter-dialog.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#critter-dialog p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9em;
+}
+#critter-dialog::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid var(--border);
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
