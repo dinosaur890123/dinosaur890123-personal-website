@@ -398,7 +398,7 @@ function init() {
     }
     updateEasterEggDisplay();
     enableTooltips();
-    setupCritterTalk()l
+    setupCritterTalk();
 }
 if (newTabMenu) {
     newTabMenu.addEventListener('click', (e) => {
