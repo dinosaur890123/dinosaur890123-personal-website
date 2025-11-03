@@ -383,7 +383,7 @@ function setupCritterTalk() {
             randomIndex = Math.floor(Math.random() * messages.length);
         } while (randomIndex === lastMessageIndex);
         lastMessageIndex = randomIndex;
-        messageEl.textContent = messages[randomIndex];
+        messageElement.textContent = messages[randomIndex];
         dialog.classList.remove('hidden');
         setTimeout(() => dialog.classList.add('visible'), 10);
     });
