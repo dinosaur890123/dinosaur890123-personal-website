@@ -623,6 +623,9 @@ footer {
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
 }
+#critter:hover {
+    transform: scale(1.1);
+}
 #critter-dialog.visible {
     opacity: 1;
     transform: translateY(0);
