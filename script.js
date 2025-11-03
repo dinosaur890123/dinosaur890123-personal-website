@@ -367,6 +367,7 @@ function setupCritterTalk() {
     const critter = document.getElementById('critter');
     const dialog = document.getElementById('critter-dialog');
     const messageElement = document.getElementById('critter-message');
+    if (!critter || !dialog || !messageElement) return;
     const messages = [
         "Hi!",
         "Meow!",
