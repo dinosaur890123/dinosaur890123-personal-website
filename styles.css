@@ -656,3 +656,6 @@ footer {
         transform: translateY(0);
     }
 }
+#guestbook-message {
+    margin-left: 15px;
+}
